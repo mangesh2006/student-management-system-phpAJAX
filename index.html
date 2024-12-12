@@ -28,9 +28,9 @@
             <input type="search" id="search" class="search_input" placeholder="Search">
             <button class="search_btn" type="button" onclick="search()">Search</button>
         </div>
-        <table border='0' cellpadding="5px" cellspacing="0">
+        <table border='0' cellpadding="5px" cellspacing="0" id="student-table">
             <thead>
-                <tr align="center">
+                <tr align="center" style="overflow: hidden;">
                     <th>Roll No.</th>
                     <th>Name</th>
                     <th>Mobile No.</th>
@@ -42,6 +42,7 @@
                 </tr>
             </thead>
             <tbody id="tbody"></tbody>
+            <button id="download" class="btn" style="margin-bottom: 5px;" onclick="generatePDF()">Download PDF</button>
         </table>
     </div>
     <div class="edit_modal" id="edit" style="display: none;">
@@ -59,6 +60,7 @@
             <button type="submit" class="btn" id="save_btn" onclick="update()">Save</button>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -8,7 +8,7 @@ function loadTabe() {
                 tr += `<tr><td style = 'color: red; font-weight: bold; font-size: 1.5rem' colspan = '8' align = 'center'>No Records Found</td></tr>`;
             } else {
                 for (var i in data) {
-                    tr += `<tr><td align = 'center' class  = 'row'>${data[i].rollno}</td>
+                    tr += `<tr style = 'overflow: hidden;'><td align = 'center' class  = 'row'>${data[i].rollno}</td>
                                         <td align = 'center' class  = 'row'>${data[i].name}</td>
                                         <td align = 'center' class  = 'row'>${data[i].mobileno}</td>
                                         <td align = 'center' class  = 'row'>${data[i].course}</td>
@@ -165,4 +165,19 @@ function search() {
                 tbody.innerHTML = tr;
             }
         })
+}
+
+function generatePDF() {
+    const table = document.getElementById("student-table");
+
+    html2pdf()
+        .from(table)
+        .set({
+            margin: 1,
+            filename: 'Student_List.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 3 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        })
+        .save();
 }
